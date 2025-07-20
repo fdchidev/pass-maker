@@ -32,7 +32,28 @@ def mostrar_contraseña_en_gui():
         messagebox.showerror("Error Inesperado", f"Ocurrió un error: {e}")
 
 
-# --- 3. Configuración de la Ventana Principal de CustomTkinter ---
+# --- 5.- NUEVA: Función para Copiar la Contraseña al Portapapeles ---- 
+
+def copiar_al_portapapeles():
+    contrasena_a_copiar = etiqueta_resultado.cget("text") # Obtiene el texto actual de la etiqueta
+    if contrasena_a_copiar and contrasena_a_copiar != "Contraseña Generada Aquí": # Asegura que haya algo que copiar
+        try:
+            ventana.clipboard_clear()  # Limpia el portapapeles
+            ventana.clipboard_append(contrasena_a_copiar) # Añade la contraseña
+            # Opcional: mostrar un mensaje temporal de confirmación
+            messagebox.showinfo("Copiado", "¡Contraseña copiada al portapapeles!")
+            # Si quieres una retroalimentación más sutil y temporal:
+            # etiqueta_estado.configure(text="¡Copiado!", text_color="green")
+            # ventana.after(2000, lambda: etiqueta_estado.configure(text="")) # Desaparece después de 2 segundos
+        except Exception as e:
+            messagebox.showerror("Error al Copiar", f"No se pudo copiar al portapapeles: {e}")
+    else:
+        messagebox.showwarning("Advertencia", "No hay contraseña para copiar.")
+
+
+
+
+# --- 4. Configuración de la Ventana Principal de CustomTkinter ---
 # Configura el tema y el color de los widgets
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -42,7 +63,7 @@ ventana.title("Generador de Contraseñas Seguras")
 ventana.geometry("480x280") # Un poco más grande para el estilo moderno
 ventana.resizable(False, False)
 
-# --- 4. Creación de Elementos (Widgets) de CustomTkinter ---
+# --- 5. Creación de Elementos (Widgets) de CustomTkinter ---
 
 # Frame para agrupar los elementos y dar un mejor diseño
 frame_principal = ctk.CTkFrame(ventana, corner_radius=10)
@@ -62,8 +83,20 @@ boton_generar = ctk.CTkButton(frame_principal, text="Generar Contraseña", comma
 boton_generar.pack(pady=15)
 
 # Etiqueta para mostrar la contraseña generada
-etiqueta_resultado = ctk.CTkLabel(frame_principal, text="Contraseña Generada Aquí", font=ctk.CTkFont(family="monospace", size=16, weight="bold"), text_color="green")
+etiqueta_resultado = ctk.CTkLabel(frame_principal, text="Contraseña Generada Aquí", font=ctk.CTkFont(family="monospace", size=16, weight="bold"), text_color="white")
 etiqueta_resultado.pack(pady=10)
 
-# --- 5. Iniciar el Bucle Principal de la Aplicación ---
+
+
+# --- NUEVO: Botón para Copiar al Portapapeles ---
+boton_copiar = ctk.CTkButton(frame_principal, text="Copiar al Portapapeles", command=copiar_al_portapapeles, font=ctk.CTkFont(size=14), height=35, state="normal") # Inicialmente deshabilitado disabled
+boton_copiar.pack(pady=(5, 10))
+
+# Opcional: Etiqueta de estado para mensajes temporales (si no usas messagebox para "Copiado!")
+# etiqueta_estado = ctk.CTkLabel(frame_principal, text="", font=ctk.CTkFont(size=12))
+# etiqueta_estado.pack()
+
+
+
+# --- 6. Iniciar el Bucle Principal de la Aplicación ---
 ventana.mainloop()
