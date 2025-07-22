@@ -1,3 +1,10 @@
 .DS_Store
 .env
 __pycache__/
+venv/
+*.pyc
+.DS_Store
+dist/         # Ignorar la carpeta de salida de PyInstaller
+build/        # Ignorar la carpeta temporal de PyInstaller
+*.spec        # Ignorar el archivo de especificación de PyInstaller
+*.dmg         # Ignorar los archivos DMG 
