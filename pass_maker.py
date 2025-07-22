@@ -4,6 +4,8 @@ from tkinter import messagebox
 import string
 import random
 
+VERSION = "1.0.0"
+
 # --- 1.- Lógica de 'Genenración de contraseñas'
 
 def generar_contraseña(longitud=12):
