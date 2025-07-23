@@ -8,3 +8,8 @@ dist/         # Ignorar la carpeta de salida de PyInstaller
 build/        # Ignorar la carpeta temporal de PyInstaller
 *.spec        # Ignorar el archivo de especificación de PyInstaller
 *.dmg         # Ignorar los archivos DMG 
+
+
+ 11.png
+icono.icns
+vol.icns
