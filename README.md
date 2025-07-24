@@ -1,7 +1,7 @@
-🔐 Generador de Contraseñas Seguras
+Generador de Contraseñas Seguras
 Un generador de contraseñas potente y fácil de usar, diseñado para crear contraseñas fuertes y aleatorias que te ayuden a proteger tus cuentas en línea. Desarrollado con Python y una interfaz gráfica moderna utilizando CustomTkinter.
 
-✨ Características
+Características
 Generación Aleatoria: Crea contraseñas utilizando una combinación de letras (mayúsculas y minúsculas), números y símbolos.
 
 Longitud Personalizable: Permite al usuario especificar la longitud deseada de la contraseña.
